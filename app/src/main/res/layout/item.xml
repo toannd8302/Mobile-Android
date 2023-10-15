@@ -18,8 +18,8 @@
             android:id="@+id/cat1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
             android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/download" />
 
         <TextView
@@ -30,6 +30,13 @@
             android:text="Meo de thuong"
             android:textSize="20dp" />
 
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gia"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -9,10 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.recyleviewdemo.model.AddActivity;
-import com.example.recyleviewdemo.model.CaAdapter;
+import com.example.recyleviewdemo.model.VegetableAdapter;
 import com.example.recyleviewdemo.model.OnVegetableAddedListener;
 import com.example.recyleviewdemo.model.Vegetable;
 import com.example.recyleviewdemo.model.VegetableDetail;
@@ -20,13 +19,14 @@ import com.example.recyleviewdemo.model.VegetableDetail;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CaAdapter.VegetableItemListener {
+public class MainActivity extends AppCompatActivity implements VegetableAdapter.VegetableItemListener {
     private RecyclerView recyclerView;
     private Button editButton;
-    private CaAdapter adapter;
+    private VegetableAdapter adapter;
     private Toolbar toolbar;
     public static OnVegetableAddedListener onVegetableAddedListener;
     private static final int ADD_PRODUCT_REQUEST_CODE = 1;
+    private static final int UPDATE_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements CaAdapter.Vegetab
         setSupportActionBar(toolbar);
         editButton = findViewById(R.id.edit_button);
         recyclerView = findViewById(R.id.rview);
-        adapter = new CaAdapter(getList());
+        adapter = new VegetableAdapter(getList());
         adapter.setVegetableItemListener(this);
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(manager);
@@ -70,13 +70,11 @@ public class MainActivity extends AppCompatActivity implements CaAdapter.Vegetab
 
     @Override
     public void onItemClick(View view, int position) {
-        Vegetable vegetable = adapter.getItem(position);
+        Vegetable selectedvegetable = adapter.getItem(position);
+        //Truyền Intent qua VegetableDetail
         Intent intent = new Intent(MainActivity.this, VegetableDetail.class);
-        intent.putExtra("vegetable_name", vegetable.getName());
-        intent.putExtra("vegetable_image", vegetable.getImg());
-        intent.putExtra("vegetable_price", vegetable.getPrice());
-        intent.putExtra("vegetable_des", vegetable.getDes());
-        startActivity(intent);
+        intent.putExtra("selected_vegetable",selectedvegetable);
+        startActivityForResult(intent, UPDATE_REQUEST_CODE);
     }
 
     @Override
@@ -87,6 +85,18 @@ public class MainActivity extends AppCompatActivity implements CaAdapter.Vegetab
             Vegetable newVegetable = data.getParcelableExtra("new_vegetable");
             if (newVegetable != null) {
                 onVegetableAddedListener.onVegetableAdded(newVegetable);
+            }
+        }
+        if (requestCode == UPDATE_REQUEST_CODE && resultCode == RESULT_OK){
+            //Lấy updateVegetable
+            Vegetable updatedVegetable = data.getParcelableExtra("updated_vegetable");
+            if (updatedVegetable != null){
+                //Lấy vị trí updateVegetable
+                int position = adapter.getPosition(updatedVegetable);
+                if (position != -1){
+                    //Thực hiện Update
+                    adapter.updateItemAtPosition(position, updatedVegetable);
+                }
             }
         }
     }

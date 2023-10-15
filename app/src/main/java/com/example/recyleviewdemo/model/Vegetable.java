@@ -79,7 +79,7 @@ public class Vegetable implements Parcelable {
         }
     };
 
-    private Vegetable(Parcel in) {
+    private Vegetable (Parcel in) {
         img = in.readInt();
         name = in.readString();
         price = in.readDouble();

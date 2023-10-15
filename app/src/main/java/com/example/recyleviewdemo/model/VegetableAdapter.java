@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.recyleviewdemo.R;
 import java.util.List;
 
-public class CaAdapter extends RecyclerView.Adapter<CaAdapter.CartViewHolder> {
+public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.CartViewHolder> {
     private List<Vegetable> mList;
     private VegetableItemListener vegetableItemListener;
 
-    public CaAdapter(List<Vegetable> mList) {
+
+    public VegetableAdapter(List<Vegetable> mList) {
         this.mList = mList;
     }
 
@@ -34,6 +35,7 @@ public class CaAdapter extends RecyclerView.Adapter<CaAdapter.CartViewHolder> {
         Vegetable vegetable = mList.get(position);
         holder.img.setImageResource(vegetable.getImg());
         holder.tv.setText(vegetable.getName());
+        holder.tv2.setText(String.valueOf(vegetable.getPrice()));
     }
 
     public void add(Vegetable vegetable) {
@@ -44,7 +46,22 @@ public class CaAdapter extends RecyclerView.Adapter<CaAdapter.CartViewHolder> {
     public Vegetable getItem(int position) {
         return mList.get(position);
     }
-
+    //Lấy vị trí của Update Vegetable
+    public void updateItemAtPosition(int position, Vegetable updatedVegetable) {
+        if (position >= 0 && position < mList.size()) {
+            mList.set(position, updatedVegetable);
+            notifyItemChanged(position);
+        }
+    }
+    //Lấy vị trí của selected Vegetable
+    public int getPosition(Vegetable vegetable) {
+        for (int i = 0; i < mList.size(); i++) {
+            if (mList.get(i) == vegetable){
+                return i; // Found the position
+            }
+        }
+        return -1; // Not found
+    }
     @Override
     public int getItemCount() {
         if (mList != null) return mList.size();
@@ -53,12 +70,13 @@ public class CaAdapter extends RecyclerView.Adapter<CaAdapter.CartViewHolder> {
 
     public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView img;
-        private TextView tv;
+        private TextView tv,tv2;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.cat1);
             tv = itemView.findViewById(R.id.name);
+            tv2 = itemView.findViewById(R.id.price);
             itemView.setOnClickListener(this);
         }
 

@@ -9,12 +9,12 @@ import android.widget.ImageView;
 
 import com.example.recyleviewdemo.R;
 
-public class SpinnerAdater extends BaseAdapter {
+public class SpinnerAdapter extends BaseAdapter {
     //Contains all image that available
     private int[]imgs = {R.drawable.cudau,R.drawable.cuden};
     private Context context;
 
-    public SpinnerAdater(Context context) {
+    public SpinnerAdapter(Context context) {
         this.context = context;
     }
 

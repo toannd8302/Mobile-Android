@@ -10,14 +10,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.recyleviewdemo.MainActivity;
 import com.example.recyleviewdemo.R;
-
-import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
     private Spinner sp;
-    private CaAdapter adapter;
+    private VegetableAdapter adapter;
     private EditText eName, ePrice, eDesc;
     private Button btAdd;
     private OnVegetableAddedListener onVegetableAddedListener;
@@ -63,8 +60,8 @@ public class AddActivity extends AppCompatActivity {
 
     private void initView(){
         sp = findViewById(R.id.img);
-        SpinnerAdater adater = new SpinnerAdater(this);
-        sp.setAdapter(adater);
+        SpinnerAdapter adapter = new SpinnerAdapter(this);
+        sp.setAdapter(adapter);
         eName = findViewById(R.id.vegetable_name);
         ePrice = findViewById(R.id.vegetable_price);
         eDesc = findViewById(R.id.vegetable_description);

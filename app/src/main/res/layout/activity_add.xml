@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".model.AddActivity">
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Input new vegetable"
+        android:textSize="22dp"
+
+
+
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <Spinner
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/input"
+        app:layout_constraintVertical_bias="0.087"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <EditText
+        android:id="@+id/vegetable_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"
+        android:textSize="12dp"
+
+        />
+    <EditText
+        android:id="@+id/vegetable_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:hint="Enter price"/>
+
+        <EditText
+            android:id="@+id/vegetable_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter description"/>
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:textSize="14dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="150dp"
+
+        />
+
+</LinearLayout>

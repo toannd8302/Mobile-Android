@@ -56,7 +56,7 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Cart
     //Lấy vị trí của selected Vegetable
     public int getPosition(Vegetable vegetable) {
         for (int i = 0; i < mList.size(); i++) {
-            if (mList.get(i) == vegetable){
+            if (mList.get(i).getName().equals(vegetable.getName())){
                 return i; // Found the position
             }
         }

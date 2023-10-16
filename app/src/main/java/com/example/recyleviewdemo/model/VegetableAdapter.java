@@ -62,6 +62,13 @@ public class VegetableAdapter extends RecyclerView.Adapter<VegetableAdapter.Cart
         }
         return -1; // Not found
     }
+
+    public void deleteItem(int position){
+        if (position >= 0 && position < mList.size()) {
+            mList.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
     @Override
     public int getItemCount() {
         if (mList != null) return mList.size();

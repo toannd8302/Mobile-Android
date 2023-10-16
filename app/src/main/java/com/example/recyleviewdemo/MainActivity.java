@@ -98,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements VegetableAdapter.
                     adapter.updateItemAtPosition(position, updatedVegetable);
                 }
             }
+            Vegetable deletedVegetable = data.getParcelableExtra("deleted_vegetable");
+            if(deletedVegetable != null){
+                int position = adapter.getPosition(deletedVegetable);
+                if(position != -1) {
+                    adapter.deleteItem(position);
+                }
+            }
         }
     }
 }

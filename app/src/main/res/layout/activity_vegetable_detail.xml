@@ -6,26 +6,28 @@
     android:layout_height="match_parent"
 
     tools:context=".model.VegetableDetail">
+
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/vegetable_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
             android:adjustViewBounds="true"
-            />
+            android:scaleType="centerCrop" />
 
         <EditText
             android:id="@+id/vegetable_name"
-            android:hint="Enter name of Vegetable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:hint="Enter name of Vegetable"
             android:textSize="20dp" />
+
         <EditText
             android:id="@+id/vegetable_price"
             android:layout_width="match_parent"
@@ -33,6 +35,7 @@
             android:gravity="center"
             android:hint="price"
             android:textSize="20dp" />
+
         <EditText
             android:id="@+id/vegetable_description"
             android:layout_width="match_parent"
@@ -40,21 +43,26 @@
             android:gravity="center"
             android:hint="Enter Description"
             android:textSize="20dp" />
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnSave"
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="Save"/>
-        <Button
-            android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="Delete"/>
-</LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Save" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Delete"
+                android:onClick="onDeleteButtonClick"/>
+        </LinearLayout>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>

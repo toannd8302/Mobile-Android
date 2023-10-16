@@ -17,10 +17,11 @@ import org.w3c.dom.Text;
 
 public class VegetableDetail extends AppCompatActivity {
     EditText etDesc, etPrice;
-    Button btnSave;
+    Button btnSave, btnDelete;
     TextView txtName;
     ImageView img;
     Vegetable selectedVegetable;
+    VegetableAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,20 @@ public class VegetableDetail extends AppCompatActivity {
                     finish();
             }
         });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onDeleteButtonClick(v);
+            }
+        });
+    }
+    public void onDeleteButtonClick(View view) {
+        if (selectedVegetable != null) {
+                    Intent intent = new Intent(VegetableDetail.this, MainActivity.class);
+                    intent.putExtra("deleted_vegetable", selectedVegetable);
+                    setResult(RESULT_OK, intent);
+                    finish();
+        }
     }
     private void initView(){
         img = findViewById(R.id.vegetable_image);
@@ -57,5 +72,6 @@ public class VegetableDetail extends AppCompatActivity {
         etDesc = findViewById(R.id.vegetable_description);
         etPrice = findViewById(R.id.vegetable_price);
         btnSave = findViewById(R.id.btnSave);
+        btnDelete = findViewById(R.id.btnDelete);
     }
 }
